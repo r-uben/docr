@@ -17,17 +17,21 @@ Process academic papers and documents using free local models first, with automa
 ## Quick Start
 
 ```bash
-# Install with Poetry
-poetry install
+# Install globally (recommended)
+pipx install docr --python python3.12
 
-# Install cloud engine SDKs (optional)
-poetry install --extras cloud
+# Or install in a project
+pip install docr
+
+# Pull required Ollama models
+ollama pull deepseek-r1:32b    # quality audit
+ollama pull deepseek-ocr       # local OCR
 
 # Process a paper
-docr process paper.pdf
+docr paper.pdf
 
 # Process with figure images saved
-docr process paper.pdf --save-figures
+docr paper.pdf --save-figures
 
 # Batch process a folder
 docr batch ~/Papers/ --limit 10
@@ -316,7 +320,11 @@ Each OCR backend is a standalone CLI tool that can be used independently:
 ## CLI Commands
 
 ```bash
-# Process single PDF
+# Simple usage
+docr paper.pdf                    # Process a PDF
+docr paper.pdf --save-figures     # Save figure images
+
+# Full options
 docr process paper.pdf [OPTIONS]
   -o, --output PATH      Output file path
   -f, --format           markdown|json|txt
