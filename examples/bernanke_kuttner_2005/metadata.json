@@ -1,20 +1,20 @@
 {
   "document": "/Users/rubenffuertes/Library/CloudStorage/GoogleDrive-fernandezfuertesruben@gmail.com/My Drive/Library/Papers/2005__bernanke_kuttner__what_explains_stock_market_reaction_to_federal_reserve_policy__JF.pdf",
-  "output_file": "examples/bernanke_kuttner_2005/bernanke_kuttner_2005.md",
+  "output_file": "/tmp/docr_vector_test/test.md",
   "format": "markdown",
-  "created_at": "2025-12-23T22:03:19.176241Z",
+  "created_at": "2025-12-23T22:42:44.424073Z",
   "stats": {
     "total_pages": 37,
     "pages_success": 37,
     "pages_warning": 0,
     "pages_error": 0,
     "total_cost": 0.0,
-    "total_time": 348.9687399864197
+    "total_time": 414.6479070186615
   },
   "engines_used": {
     "deepseek": 37
   },
-  "figures": 2,
+  "figures": 6,
   "pages_needing_reprocessing": [],
   "document_metadata": {
     "doc_type": "policy",

@@ -2,7 +2,7 @@
 
 ## Summary
 - Pages: 37/37 successful
-- Figures: 2
+- Figures: 6
 - Cost: $0.0000
 
 ## Content
@@ -20,35 +20,6 @@ THE ULTIMATE OBJECTIVES OF MONETARY POLICY are expressed in terms of macroeconom
 
 This paper is an empirical study of the relationship between monetary policy and one of the most important financial markets, the market for equities. According to the conventional wisdom, changes in monetary policy are transmitted through the stock market via changes in the values of private portfolios (the "wealth effect"), changes in the cost of capital, and by other mechanisms as well. Some observers also view the stock market as an independent source of macroeconomic volatility, to which policymakers may wish to respond. For these reasons, it will be useful to obtain quantitative estimates of the links between monetary policy changes and stock prices. In this paper we have two principal objectives. First, we measure and analyze in some detail the stock market's response to monetary policy actions, both in the aggregate and at the level of
 
-**[Figure 1]** (diagram)
-> Based on the image provided, it appears to be a **blank white rectangle** with no visible content.
-
-As a result, there is no visualization, data, or information to analyze. If you intended to upload a specific chart or diagram, please re-upload the file, and I will be happy to provide a detailed analysis.
-
-**[Figure 2]** (unknown)
-> Based on the image provided, here is a detailed analysis:
-
-### 1. Type of Visualization
-This is not a data visualization (like a chart or graph). Instead, it is a **Graphical User Interface (GUI) element**, specifically a **functional button or call-to-action (CTA) icon**. It is the standard "Crossmark" button used in academic and scholarly publishing.
-
-### 2. Key Components
-The image consists of several distinct parts:
-*   **The Icon:** On the left is a circular logo. It features a red, ribbon-like bookmark in the center, surrounded by a ring that is half teal (top and right) and half yellow (bottom and left).
-*   **The Text Label:** To the right of the icon is the phrase "Check for updates" in a dark gray, sans-serif typeface.
-*   **The Container:** The entire element is housed within a rectangular button with a subtle light-gray gradient and a thin gray border, designed to look clickable.
-
-### 3. Information Conveyed
-This button conveys functional information rather than raw data:
-*   **Service Identification:** It identifies the document as participating in the **Crossmark service**, a multi-publisher initiative from Crossref.
-*   **Functionality:** It informs the reader that by clicking this button, they can verify the current status of the piece of content they are reading.
-*   **Trust and Integrity:** Its presence signals that the publisher is committed to maintaining the scholarly record and notifying readers of any changes.
-
-### 4. Main Findings or Takeaways
-*   **Purpose:** The primary takeaway is that this is a tool for **version control and transparency** in scholarly publishing. 
-*   **Actionable Element:** When clicked in a live digital environment (like a PDF or a webpage), it typically opens a pop-up window that tells the reader if the document is current or if there have been updates, corrections, or retractions.
-*   **Standardization:** This is a globally recognized symbol in academia, providing a consistent way for researchers to ensure they are citing and relying on the most up-to-date version of a study.
-
-
 --- Page 2 ---
 industry portfolios. Second, we try to gain some insights into the reasons for the stock market's response.
 
@@ -65,7 +36,7 @@ Section II takes up the question of what explains equity prices' response, an is
 
 Relatively few papers to date have attempted to provide an explanation for the market's reaction to monetary policy. One effort along these lines is that of Patelis (1997), who also used the Campbell- Ammer framework to perform a decomposition similar to ours. Goto and Valkanov (2000) used a somewhat different VAR- based method to focus on the covariance between inflation and stock returns. Both relied on policy shocks derived from identified VARs, however, rather than the futures- based surprise used in our analysis. Boyd, Jagannathan, and Hu (2001) also considered the linkage between policy and stock prices. Their analysis focused on the market's response to employment news, rather than to monetary policy directly, however.
 
-### I. The Reaction of Equity Prices to Changes in the Target Federal Funds Rate
+## I. The Reaction of Equity Prices to Changes in the Target Federal Funds Rate
 
 This section focuses on the immediate impact of monetary policy on equity prices, both for broad stock market indices and for industry portfolios. As noted in the introduction, however, one difficulty inherent in measuring policy's effects is that asset markets are forward looking and hence tend to incorporate any information about anticipated policy changes. Some effort is therefore required to isolate the unexpected policy change that might plausibly generate a market response. This does not say that asset prices respond to monetary policy only when the Fed surprises the markets, of course. Naturally, asset prices will also respond to revisions in expectations about future policy, which in turn may be driven by news about changing economic conditions. Our focus on unexpected policy actions allows us to circumvent difficult issues of endogeneity and simultaneity, and discern more clearly the stock market reaction to monetary policy.
 
@@ -148,6 +119,37 @@ Although it has the expected negative sign, the response to the raw target rate 
 
 The negative relationship between funds rate surprises and stock returns is readily visible in Figure 1. Also apparent, however, are a number of
 
+**[Figure 1]** (scatter_plot)
+> Based on the provided image, here is a detailed analysis of the chart:
+
+### 1. Type of Visualization
+This is a **scatter plot**. It uses individual data points plotted on a two-dimensional coordinate system to show the relationship between two variables.
+
+### 2. Key Components
+*   **Axes:**
+    *   **Horizontal Axis (X-axis):** A numerical scale ranging from approximately -0.50 to +0.25. There is a vertical reference line at 0.00.
+    *   **Vertical Axis (Y-axis):** A numerical scale ranging from -4 to +6. There is a horizontal reference line at 0.
+*   **Legend:** The chart identifies four distinct categories of data points:
+    *   **Grey Square:** FOMC (Federal Open Market Committee) meeting.
+    *   **'x' Mark:** Intermeeting (policy actions taken between scheduled meetings).
+    *   **Grey Circle:** Employment report.
+    *   **Black Triangle:** Reversal (likely referring to a change in the direction of policy).
+*   **Labels:** Several specific data points are labeled with dates (e.g., 1/3/2001, 8/21/1991, 7/2/1992), highlighting significant historical events.
+
+### 3. Information Conveyed
+The chart illustrates the relationship between two economic/financial variables related to U.S. Federal Reserve policy and market reactions. While the axes are not explicitly labeled with units, in economic literature, this type of chart typically shows:
+*   **X-axis:** The "surprise" component of a policy rate change (the difference between the actual rate change and what the market expected).
+*   **Y-axis:** The market's reaction, often measured as a change in long-term interest rates or a "path surprise" (how the event changed expectations for future interest rates).
+
+The plot tracks how different types of news (scheduled meetings vs. surprise intermeeting moves vs. employment data) impact the markets over a period spanning roughly 1991 to 2001.
+
+### 4. Main Findings and Takeaways
+*   **Clustering at the Origin:** The vast majority of data points, particularly the grey squares (FOMC meetings), are clustered near the (0,0) center. This indicates that most scheduled meetings result in small surprises and relatively minor market adjustments.
+*   **Outliers are Significant:** The most extreme data points are often "Intermeeting" moves or "Reversals." For example, **1/3/2001** and **4/18/2001** (both intermeeting actions) show very large negative values on the x-axis and very large positive values on the y-axis. This corresponds to the Fed's aggressive, unexpected rate cuts during the collapse of the dot-com bubble.
+*   **Intermeeting Moves Carry More Weight:** The 'x' marks and black triangles are generally further from the center than the squares, suggesting that actions taken outside of scheduled meetings have a much larger "surprise" factor and trigger more significant market reactions.
+*   **Specific Historical Context:** The chart highlights specific moments of high volatility, such as the "bond market massacre" of 1994 (labeled 5/17/1994 and 8/16/1994) and the significant policy shifts in the early 1990s and early 2001.
+
+
 --- Page 8 ---
 Figure 2. Distribution of regression influence statistics. The statistics are based on the changes in the estimated parameters from a regression of 1-day CRSP value-weighted equity returns on the surprise and expected components of the Federal funds rate change, dropping each observation in turn from the sample.
 
@@ -156,6 +158,32 @@ observations characterized by very large changes in equity prices—some exceedi
 To determine which observations might have an unduly large effect on the regression results, we computed influence statistics for each observation in the sample. These statistics are calculated from the quadratic form \(\Delta \hat{b}_t^{\prime} \hat{\Sigma}^{- 1} \Delta \hat{b}_t\) , where \(\Delta \hat{b}_t\) represents the change in the vector of regression coefficients resulting from dropping observation \(t\) and \(\hat{\Sigma}\) is the estimated covariance matrix of the coefficients. The distribution of these statistics, plotted in Figure 2, confirms that six observations, all with statistics in excess of 0.3, exert an unusually large influence on the estimates; the comparable statistics for the remaining observations are all well below 0.2 and most are less than 0.05. The six observations associated with the large influence statistics are labeled in Figure 1: August 8, 1991; July 2, 1992; October 15, 1998; January 3, 2001; March 20, 2001; and April 18, 2001. The first two of these are associated with events other than monetary policy actions, while the most recent four arguably represent unusual reactions to monetary policy actions. Each in its own way is revealing.
 
 All three of the candidate outliers occurring during the easing cycle that began in 2001 are classified as such because of their abnormally large reactions to the funds rate surprises. The unexpected 50- basis- point intermeeting rate reductions on January 3 and April 18 were both greeted euphorically, with 1- day returns of 5.3% and 4.0%, respectively. The 50- basis- point rate cut on March 20 was received less enthusiastically, however. Even though the cut was more or less what the futures market had been anticipating, financial press reported
+
+**[Figure 2]** (bar_chart)
+> Based on the provided image, here is a detailed analysis of the visualization:
+
+### 1. Type of Visualization
+This is a **histogram** or a **bar chart**. It displays the frequency distribution of a numerical variable across several discrete intervals or categories.
+
+### 2. Axes, Labels, and Key Components
+*   **X-axis (Horizontal):** This axis represents a numerical variable. It has labels at regular intervals: **0.05, 0.10, 0.15, 0.20, 0.25, 0.30, and 0.35**. These likely represent the centers or boundaries of data bins.
+*   **Y-axis (Vertical):** This axis represents frequency or count. The labels on the left are partially cut off, showing only the digit **"0"** at each major tick mark (e.g., 0, 10, 20... or 0, 100, 200...). There are six major intervals marked on this axis.
+*   **Bars:** There are light gray bars with black outlines. The height of each bar corresponds to the frequency of data points within that specific x-axis category.
+*   **Missing Elements:** The chart lacks a title, specific axis titles (e.g., "Frequency," "Probability," or the name of the variable being measured), and a legend.
+
+### 3. Data and Information Conveyed
+The chart conveys the distribution of a dataset across a range of values from approximately 0.05 to 0.35.
+*   **Highest Frequency:** The category labeled **0.05** has by far the highest count, nearly reaching the top of the y-axis scale.
+*   **Secondary Frequency:** The category **0.10** has a significantly lower count, roughly one-tenth the height of the first bar.
+*   **Low Frequency/Outliers:** The categories **0.15** and **0.20** have very small, barely visible bars. The categories **0.25** and **0.30** appear to have no data (zero frequency).
+*   **Small Peak at End:** There is a small but noticeable bar at the **0.35** mark, indicating a slight increase in frequency at the higher end of the scale compared to the middle values.
+
+### 4. Main Findings and Takeaways
+*   **Highly Skewed Distribution:** The data is **positively skewed** (right-skewed). The vast majority of observations are concentrated at the lowest end of the measured scale (0.05).
+*   **Rapid Decay:** There is a sharp and immediate drop-off in frequency as the values increase from 0.05 to 0.15.
+*   **Bimodal Tendency:** While primarily unimodal (one main peak), there is a very slight secondary "bump" at 0.35, suggesting a small subset of the data exists at a higher value range, separated from the main cluster by a gap of zero-frequency categories (0.25–0.30).
+*   **Concentration:** Most of the "action" or data density occurs between the values of 0.05 and 0.10.
+
 
 --- Page 9 ---
 that many equity market participants were "disappointed" the rate cut had not been an even larger 75- basis- point action. Consequently, the market lost more than \(2\%\) .
@@ -175,9 +203,9 @@ Columns (c) and (d) of Table II show the effect of dropping the six candidate ou
 As noted above, the event- study results reported in Section I.B rely on the assumption that the error term is orthogonal to funds rate changes. One reason for a violation of this condition would be a contemporaneous response of
 
 --- Page 10 ---
-monetary policy to the stock market. There are, however, no clear examples of instances in which a drop in equity prices led the FOMC to cut rates, or the inverse. Even in monthly data, evidence for such a systematic reaction is elusive. Moreover, to the extent the FOMC did respond in this way, it would tend to reduce the size of the estimated response to the funds rate surprise.
+monetary policy to the stock market. There are, however, no clear examples of instances in which a drop in equity prices led the FOMC to cut rates, or the inverse. Even in monthly data, evidence for such a systematic reaction is elusive.^5 Moreover, to the extent the FOMC did respond in this way, it would tend to reduce the size of the estimated response to the funds rate surprise.
 
-The orthogonality condition would also fail to hold if monetary policy and the stock market both responded jointly (and contemporaneously) to new information. For example, the release of data indicating weaker- than- expected economic growth would plausibly cause the stock market to decline, and make a cut in the funds rate target more likely. As in the case of a direct policy response to the stock market, the resulting tendency for rate cuts to be associated with stock market declines would lead to a downward bias in the size of policy's estimated market impact. A similarly attenuated reaction would be observed if surprise policy actions were thought to reveal private information about the state of the economy.
+The orthogonality condition would also fail to hold if monetary policy and the stock market both responded jointly (and contemporaneously) to new information. For example, the release of data indicating weaker- than- expected economic growth would plausibly cause the stock market to decline, and make a cut in the funds rate target more likely.^6 As in the case of a direct policy response to the stock market, the resulting tendency for rate cuts to be associated with stock market declines would lead to a downward bias in the size of policy's estimated market impact. A similarly attenuated reaction would be observed if surprise policy actions were thought to reveal private information about the state of the economy.^7
 
 Instances of direct, same- day policy responses to economic news are rare in our sample—at least in recent years, when the FOMC meeting schedule dictated the timing of most policy actions. During the pre- 1994 subsample, however, it was not uncommon for the FOMC to cut rates on the heels of weaker- than- expected employment data. In fact, 10 of the 23 rate cuts from June 1989 through July 1992 coincided with the release of the employment report. The analysis in Section I.D below addresses this issue directly by allowing for a different market response on employment release days.
 
@@ -275,6 +303,36 @@ Figure 3. Federal funds rate surprises and funds rate expectations. The figure i
 Regressing the change in the 3- month- ahead futures rate on the policy surprise yields an estimated slope coefficient of 0.65, as shown in column (a) of Table V. This suggests the impact of policy surprises on expectations is typically much less than one- for- one; the difference is significant at the 0.01 level. A plausible interpretation of this result is that many of the unexpected funds rate changes in the sample are to a large extent surprises only with regard to the timing of policy actions. As shown in columns (b) through (d), FOMC meetings and "no change" surprises tend to be associated with an even smaller response of expectations.
 
 In order to determine the extent to which differences in policy surprises' impact on expectations can help explain the stock market's response, our approach is to define a variable reflecting the difference between the surprises' effects on current and 3- month- ahead interest rate expectations and include this term in the equity return regressions. Specifically, our "timing surprise" variable is defined as the difference between the change in the 3- month- ahead futures rate and the current funds rate surprise, that is, the vertical distance from each observation to the 45- degree line in Figure 3. The timing surprise for an action with equal effects on current and expected future interest rates would thus be zero; those with a smaller effect on expected future interest rates would be negative. Results from the stock return regressions that include the timing surprise term appear in Table VI.
+
+**[Figure 3]** (scatter_plot)
+> Based on the provided image, here is a detailed analysis of the chart:
+
+### 1. Type of Visualization
+This is a **scatter plot** with a reference line. It displays individual data points representing specific events and compares them against a theoretical benchmark (the dashed diagonal line).
+
+### 2. Key Components
+*   **X-axis:** Represents a numerical value ranging from -0.50 to 0.25. While not explicitly labeled, in the context of financial economics, this likely represents an **initial change or surprise in a policy variable** (such as a Federal Reserve interest rate change) measured in percentage points.
+*   **Y-axis:** Represents a numerical value ranging from -50 to 25. This likely represents the **change in market expectations** (e.g., 3-month interest rate expectations) measured in basis points (where 25 basis points = 0.25 percentage points).
+*   **Reference Line:** A dashed diagonal line labeled **"1-for-1 effect on expectations."** This represents a perfect correlation where the change in expectations exactly matches the initial event (e.g., a 25-basis-point rate hike leads to a 25-basis-point increase in future expectations).
+*   **Legend:**
+    *   **Black circle (●):** 1-for-1 effect on 3-month expectations (points falling exactly on the line).
+    *   **Plus sign (+):** Greater than 1-for-1 effect (points above the line in the positive quadrant or below it in the negative quadrant).
+    *   **Gray square (■):** Less than 1-for-1 effect (points closer to the x-axis than the diagonal line).
+    *   **Triangle (△):** Perverse effect (points that move in an unexpected direction or deviate significantly from the trend).
+*   **Specific Labels:** Two data points are specifically identified by date: **5/17/1994** and **8/16/1994**.
+
+### 3. Information Conveyed
+The chart illustrates how market expectations for future interest rates (3-month expectations) react to actual changes or surprises in current policy. 
+*   It shows that while many reactions follow the "1-for-1" rule, there is significant variation.
+*   The data is concentrated in the bottom-left (negative changes) and top-right (positive changes) quadrants, indicating a generally positive correlation between the initial event and the change in expectations.
+*   The labeled dates (May and August 1994) highlight specific historical instances where the market's reaction was "perverse" or highly unusual compared to the size of the policy move.
+
+### 4. Main Findings and Takeaways
+*   **Dominance of the 1-for-1 Relationship:** A large cluster of data points sits near the dashed line, suggesting that, on average, markets adjust their short-term expectations roughly in line with policy changes.
+*   **Prevalence of Under-reaction:** There are many gray squares (less than 1-for-1 effect), indicating that markets often react more conservatively than the initial policy change might suggest.
+*   **Identification of Outliers:** The "perverse effects" (triangles) show that the market does not always react logically or predictably. The specific labeling of 1994 dates points to a well-known period of bond market volatility where Federal Reserve rate hikes led to unexpected market movements.
+*   **Asymmetry:** There appears to be more data in the negative (bottom-left) quadrant than the positive one, which may reflect the specific historical period being studied (likely a period with more frequent rate cuts or downward surprises than hikes).
+
 
 --- Page 17 ---
 # Table V The Response of Interest Rate Expectations to Federal Funds Rate Surprises
@@ -403,31 +461,58 @@ We have so far focused on the responses of broad equity indexes, but of course i
 
 A natural question is the degree to which the pattern of responses of industry portfolios is consistent with the implications of the CAPM—that is, whether the observed responses are proportional to the industries' market "betas." A straightforward way to address this question is to obtain industry betas from a regression of the excess return in industry \(i\) , \(y_{i,t}\) , on the market excess return, \(y_{M,t}\) ,
 
+**[Figure 4]** (scatter_plot)
+> Based on the provided image, here is a detailed analysis of the visualization:
+
+### 1. Type of Visualization
+This is a **scatter plot**. It uses individual data points plotted on a two-dimensional coordinate system to show the relationship between two variables.
+
+### 2. Axes, Labels, and Key Components
+*   **Horizontal Axis (X-axis):** This axis represents one variable. The numerical labels range from **0.7 on the far left to 0.3 on the far right**, with **0** located toward the right side. Although negative signs are not explicitly shown for the values to the left of zero, standard mathematical convention for such a layout implies they represent negative values (from -0.7 to 0.3).
+*   **Vertical Axis (Y-axis):** This axis represents a second variable. The numerical labels range from **-20 at the bottom to 15 at the top**, with **0** located near the middle.
+*   **Data Points:**
+    *   **Black Circles:** These represent the primary dataset, showing the distribution of the majority of observations.
+    *   **Grey Diamonds:** These are specifically highlighted points.
+*   **Legend:** Located in the bottom-left corner, it identifies the grey diamonds as **"candidate outliers."**
+*   **Reference Lines:** Solid black lines intersect at the origin **(0,0)**, dividing the plot into four quadrants.
+
+### 3. Data and Information Conveyed
+*   **Distribution:** The plot shows how a set of data points is distributed across two dimensions. Most of the data is concentrated in a central cluster.
+*   **Clustering:** The highest density of points is located near the origin, specifically between -0.2 and 0.1 on the x-axis and between -10 and 10 on the y-axis.
+*   **Outlier Identification:** The plot specifically identifies data points that fall far outside the main cluster. These "candidate outliers" are located at the extreme edges of the distribution (e.g., far to the left, far to the right, or at the very top/bottom).
+
+### 4. Main Findings and Takeaways
+*   **Central Tendency:** The majority of the data points are centered around the (0,0) coordinate, suggesting that for most observations, both variables have values close to zero.
+*   **Spread:** The data has a wider spread along the x-axis toward the negative side (left) compared to the positive side (right).
+*   **Presence of Outliers:** There are approximately 10-11 "candidate outliers" that deviate significantly from the main group. These points are important for further investigation as they represent unusual cases or potential errors in the dataset.
+*   **Negative Correlation (Slight):** There appears to be a very slight downward trend in the main cluster (as x increases, y slightly decreases), though the overall pattern is mostly a dense, centered cloud.
+
+
 --- Page 23 ---
-# Table IX The Response of Fama-French Industry Portfolios to Federal Funds Rate Surprises
+Table IX The Response of Fama-French Industry Portfolios to Federal Funds Rate Surprises
 
 The table reports the results from regressions of the 1- month returns on the Fama- French industry portfolios indicated in the row headings on the surprise and expected components of the 1- month change in the Federal funds rate, all expressed in percentage terms. The regressions also include an intercept, whose coefficient is not reported. The full sample includes 164 monthly observations spanning May 1989- December 2002. Parentheses contain \(t\) - statistics, calculated using heteroskedasticity- consistent estimates of the standard errors.
 
-| Index | Response to Federal Funds Rate Changes | R2 | SE | DW | Market Beta |
-|---|---|---|---|---|---|
-| Anticipated | Unanticipated |
-| CRSP value weighted | -1.11(0.37) | -11.43(3.95) | 0.065 | 4.28 | 2.02 | 1 |  |
-| Nondurables | -0.85(0.25) | -9.65(2.88) | 0.046 | 4.17 | 2.00 | 0.60 |  |
-| Durables | -1.47(0.38) | -12.45(3.04) | 0.048 | 5.56 | 1.97 | 1.02 |  |
-| Manufacturing | -2.02(0.61) | -8.82(2.81) | 0.035 | 4.26 | 2.03 | 0.85 |  |
-| Energy | 0.20(1.02) | -4.03(1.24) | -0.003 | 4.71 | 2.12 | 0.55 |  |
-| High-tech | 0.06(0.01) | -14.73(2.72) | 0.025 | 8.22 | 2.00 | 1.61 |  |
-| Telecommunications | 0.35(0.60) | -16.10(3.31) | 0.065 | 6.16 | 1.85 | 1.16 |  |
-| Wholesale/retail | -4.75(1.47) | -11.97(3.64) | 0.056 | 4.85 | 1.95 | 0.90 |  |
-| Health care | -1.04(0.29) | -8.04(1.80) | 0.017 | 4.96 | 2.15 | 0.72 |  |
-| Utilities | -1.24(0.48) | -5.42(1.55) | 0.006 | 4.21 | 1.97 | 0.32 |  |
-| Other | -1.21(0.35) | -11.08(3.61) | 0.051 | 4.62 | 2.09 | 0.92 |  |
+| Index | Response to Federal Funds Rate Changes | SE | DW | Market Beta |
+|---|---|---|---|---|
+| Anticipated | Unanticipated | R² |
+| CRSP value weighted | -1.11(0.37) | -11.43(3.95) | 0.065 | 4.28 | 2.02 | 1 |
+| Nondurables | -0.85(0.25) | -9.65(2.88) | 0.046 | 4.17 | 2.00 | 0.60 |
+| Durables | -1.47(0.38) | -12.45(3.04) | 0.048 | 5.56 | 1.97 | 1.02 |
+| Manufacturing | -2.02(0.61) | -8.82(2.81) | 0.035 | 4.26 | 2.03 | 0.85 |
+| Energy | 0.20(1.02) | -4.03(1.24) | -0.003 | 4.71 | 2.12 | 0.55 |
+| High-tech | 0.06(0.01) | -14.73(2.72) | 0.025 | 8.22 | 2.00 | 1.61 |
+| Telecommunications | 0.35(0.60) | -16.10(3.31) | 0.065 | 6.16 | 1.85 | 1.16 |
+| Wholesale/retail | -4.75(1.47) | -11.97(3.64) | 0.056 | 4.85 | 1.95 | 0.90 |
+| Health care | -1.04(0.29) | -8.04(1.80) | 0.017 | 4.96 | 2.15 | 0.72 |
+| Utilities | -1.24(0.48) | -5.42(1.55) | 0.006 | 4.21 | 1.97 | 0.32 |
+| Other | -1.21(0.35) | -11.08(3.61) | 0.051 | 4.62 | 2.09 | 0.92 |
 
 \[y_{i,t} = \alpha +\beta_{i}y_{M,t} + \nu_{t} \quad (8)\]
 
 estimated on the same May 1989- December 2002 sample used to estimate the response to monetary policy. The industry response implied by the CAPM can then be expressed as
 
-\[\hat{b}_i^u = \hat{\beta}_i\times \hat{b}^u, \quad (9)\]
+\[\hat{b}_t^u = \hat{\beta}_i\times \hat{b}^u, \quad (9)\]
 
 where \(\hat{b}^u\) is the estimated response of the CRSP value- weighted excess return to funds rate surprises.
 
@@ -439,6 +524,38 @@ Figure 5 plots these fitted responses to monetary policy against the estimated r
 ## II. Policy, Fundamentals, and Stock Prices
 
 Having documented the reaction of equity returns to Federal Reserve policy in section I above, we now turn to the more difficult question of what explains the observed reaction. There are three broad reasons why an unexpected funds rate increase may lead to a decline in stock prices: it may be associated with a
+
+**[Figure 5]** (scatter_plot)
+> Based on the provided image, here is a detailed analysis of the chart:
+
+### 1. Type of Visualization
+This is a **scatter plot with error bars**. It also includes a **45-degree reference line** (the dashed line), which is commonly used in "predicted vs. actual" plots to show how closely a model's predictions match observed data.
+
+### 2. Key Components
+*   **X-Axis:** Labeled "Industry response implied by the CAPM, %". It represents the theoretical or predicted response of various industries based on the Capital Asset Pricing Model (CAPM). The scale runs from -20% to 0%.
+*   **Y-Axis:** While the label is missing, the scale and context indicate it represents the **actual or observed industry response (%)**. The scale mirrors the x-axis, running from -20% at the bottom to 0% at the top.
+*   **Data Points (Black Squares):** Each square represents a specific industry. Several are explicitly labeled: High-tech, Telecom, Energy, Nondurables, and Utilities.
+*   **Error Bars (Vertical Grey Lines):** These extend above and below each data point, representing the margin of error, standard deviation, or a confidence interval (likely 95%) for the observed data.
+*   **Dashed Diagonal Line:** This is the **line of equality (y = x)**. If a data point falls exactly on this line, it means the CAPM prediction perfectly matched the actual observed response.
+
+### 3. Information Conveyed
+The chart compares the **predicted impact** of an event (likely a market-wide shock or policy change, given the negative percentages) based on the CAPM model against the **actual observed impact** across different sectors of the economy.
+
+*   **Negative Values:** All values are negative, indicating that the event being studied had a downward (negative) impact on the returns or value of these industries.
+*   **Industry Sensitivity:** The chart shows that different industries have different levels of sensitivity. For example, "High-tech" was predicted and observed to have a much sharper negative response (around -15% to -18%) compared to "Utilities" (around -4% to -5%).
+*   **Model Performance:** By plotting the points against the dashed line, the chart conveys how accurately the CAPM model explains the real-world data.
+
+### 4. Main Findings and Takeaways
+*   **CAPM is a Strong Predictor:** Most data points cluster closely along the dashed diagonal line. This suggests that the CAPM is a relatively accurate model for predicting how different industries will respond to the specific event being analyzed.
+*   **High Correlation:** There is a clear positive correlation between the predicted response and the actual response; as the CAPM-implied response becomes more negative, the actual response generally becomes more negative as well.
+*   **Varying Levels of Uncertainty:** The error bars vary significantly in size. 
+    *   The **High-tech** industry has a very large error bar, indicating high volatility or less certainty in the observed data for that sector.
+    *   Industries like **Nondurables** and **Utilities** have smaller error bars, suggesting their response was more uniform or precisely measured.
+*   **Specific Deviations:** 
+    *   **Energy** performed slightly better (less negative) than the CAPM predicted.
+    *   **Telecom** performed slightly worse (more negative) than the CAPM predicted.
+    *   However, for almost all industries shown, the dashed line falls within the range of the error bars, meaning the CAPM predictions are statistically consistent with the observations.
+
 
 --- Page 25 ---
 decrease in expected future dividends, a rise in the future expected real interest rates used to discount those dividends, or an increase in the expected excess returns (i.e., the equity premiums) associated with holding stocks. Simple regressions of equity returns on surprise changes in the Federal funds rate are silent on the question, so a more structured approach is required to disentangle the various effects.
@@ -470,7 +587,7 @@ where \(z_{t + 1}\) is an appropriately stacked \(np \times 1\) vector containin
 
 where \(s_{y}\) and \(s_{r}\) are appropriate \(1 \times np\) selection matrices.
 
-Two features of the Campbell- Ammer method deserve further comment. One is its parametric approach to constructing long- horizon expectations of stock returns: one has to assume that the dynamics of equity returns may years in the future are adequately captured by a parsimonious VAR model. To a large extent, this parametric approach is forced upon us, as the relatively short experience with Federal funds futures is not sufficient to directly estimate the long- horizon impact on stock asset returns, particularly in light of the questionable small- sample properties of long- horizon regressions (see Nelson and Kim (1993)). But as discussed below, the use of the VAR does allow us to estimate the dynamics of stock returns over a longer sample than the period for which futures data are available.
+Two features of the Campbell- Ammer method deserve further comment. One is its parametric approach to constructing long- horizon expectations of stock returns: one has to assume that the dynamics of equity returns many years in the future are adequately captured by a parsimonious VAR model. To a large extent, this parametric approach is forced upon us, as the relatively short experience with Federal funds futures is not sufficient to directly estimate the long- horizon impact on stock asset returns, particularly in light of the questionable small- sample properties of long- horizon regressions (see Nelson and Kim (1993)). But as discussed below, the use of the VAR does allow us to estimate the dynamics of stock returns over a longer sample than the period for which futures data are available.
 
 A second important feature of the approach is that dividends are not included explicitly as a variable to be forecast; given \(e_{t + 1}^{y}, \tilde{e}_{t + 1}^{y}\) and \(\tilde{e}_{t + 1}^{r}, \tilde{e}_{t + 1}^{d}\) is backed out from (10). In principle, it would be possible to forecast dividends directly in the VAR and, instead, back out an implied \(\tilde{e}_{t + 1}^{y}\) . In practice, however, this is complicated by a strong seasonal pattern, and a root near unity in the dividend process. It is important to note that to the extent that the VAR understates the
 
@@ -529,7 +646,7 @@ The most straightforward way to analyze the impact of monetary policy within the
 --- Page 29 ---
 where \(\phi\) is an \(n \times 1\) vector capturing the contemporaneous response of the elements of \(z_{t + 1}\) to the unanticipated rate change period \(t + 1\) . The new disturbance term \(w_{t + 1}^{\perp}\) is by construction orthogonal to the funds rate surprise. This effectively breaks the VAR's 1- month- ahead forecast error into a component having to do with news about monetary policy, \(\phi \tilde{\lambda}_{t + 1}^{u}\) , and a component incorporating information about things other than policy.
 
-Because \(\Delta i_{t + 1}^{u}\) represents a prediction error from a rational forecast made at time \(t\) , it should be orthogonal to \(z_{t}\) . \(^{18}\) Consistent estimates of both \(A\) and \(\phi\) can therefore be obtained by first estimating the VAR's parameters and then regressing the VAR's 1- step- ahead forecast errors on the funds rate surprises. Normally, there would be no advantage to the two- step procedure over simply estimating (15) directly. But in our case, using the two- step procedure allows us to estimate the VAR dynamics (i.e., the coefficients in the \(A\) matrix) over a sample longer than the period for which Federal funds futures are available. \(^{19}\) The longer sample will of course tend to improve the estimates' precision.
+Because \(\Delta i_{t + 1}^{u}\) represents a prediction error from a rational forecast made at time \(t\) , it should be orthogonal to \(z_{t}\) .^18 Consistent estimates of both \(A\) and \(\phi\) can therefore be obtained by first estimating the VAR's parameters and then regressing the VAR's 1- step- ahead forecast errors on the funds rate surprises. Normally, there would be no advantage to the two- step procedure over simply estimating (15) directly. But in our case, using the two- step procedure allows us to estimate the VAR dynamics (i.e., the coefficients in the \(A\) matrix) over a sample longer than the period for which Federal funds futures are available.^19 The longer sample will of course tend to improve the estimates' precision.
 
 ## C.1. The Dynamic Response to Funds Rate Surprises
 
@@ -544,9 +661,44 @@ Figure 6. The dynamic responses of excess equity returns, interest rates, and th
 
 and data news since 1994, the \(\phi\) estimated only on the post- 1994 subsample should be relatively free from this endogeneity problem. This is the approach taken in the results presented below.
 
-The upper- left- hand panel of Figure 6 displays the dynamic response of excess returns calculated in this way. The initial decline of \(11.6\%\) (not shown, because of the difference in scale) is followed by another month of negative returns and then by several months of near- zero excess returns.20 After 6 months, equities begin to exhibit small positive excess returns, peaking at \(0.16\%\) per month (1.9% at an annual rate), and continuing for a period measured in years.
+The upper- left- hand panel of Figure 6 displays the dynamic response of excess returns calculated in this way. The initial decline of \(11.6\%\) (not shown, because of the difference in scale) is followed by another month of negative returns and then by several months of near- zero excess returns.20 After 6 months, equities begin to exhibit small positive excess returns, peaking at \(0.16\%\) per month ( \(1.9\%\) at an annual rate), and continuing for a period measured in years.
 
 The contractionary funds rate surprise also leads to a sizable increase in the relative bill rate, which persists several months (essentially by construction).
+
+**[Figure 6]** (line_graph)
+> Based on the provided image, here is a detailed analysis of the visualization:
+
+### 1. Type of Visualization
+This is a series of **Impulse Response Function (IRF) plots**, commonly used in econometrics and macroeconomics. They are presented as a grid of six area charts (or filled line graphs) that show the reaction of different economic variables over time to a specific external "shock."
+
+### 2. Key Components
+*   **Grid Layout:** A 3x2 arrangement of six individual sub-plots.
+*   **X-Axis (Time):** The horizontal axis for all plots represents time periods, ranging from 0 to approximately 24. Given the variables (like "1-month spread"), these units likely represent months.
+*   **Y-Axis (Magnitude):** The vertical axis represents the magnitude of the change from the baseline. The scales vary by plot (e.g., percentages for equity returns, decimal points for interest rates and ratios).
+*   **Zero Baseline:** Each plot features a horizontal line at 0.00, representing the "steady state" or the level the variable would be at without the shock.
+*   **Shaded Areas:** The dark grey shaded regions represent the path of the variable's response over the 24-period horizon.
+*   **Labels:** Each sub-plot has a title identifying the variable:
+    1.  excess equity return
+    2.  10-year to 1-month spread
+    3.  real interest rate
+    4.  dividend/price ratio
+    5.  change in bill rate
+    6.  relative bill rate
+*   **Annotation:** The first plot includes a specific text annotation: "Initial response = -11.6%."
+
+### 3. Information Conveyed
+The charts illustrate how a specific economic event—most likely a **contractionary monetary policy shock** (an unexpected increase in interest rates)—affects various financial indicators over a two-year period.
+
+*   **The Shock:** The "real interest rate" and "change in bill rate" plots show a sharp, immediate spike at time 0, indicating the nature of the initial shock.
+*   **The Reaction:** The other four plots show how the broader market and yield curve react to that sudden increase in interest rates.
+
+### 4. Main Findings and Takeaways
+*   **Immediate Negative Impact on Equities:** An unexpected rise in interest rates causes an immediate and severe drop in stock market returns ("excess equity return"), with an initial crash of -11.6%. While returns eventually recover and turn slightly positive, the initial impact is highly disruptive.
+*   **Yield Curve Flattening:** The "10-year to 1-month spread" drops sharply and stays negative for the duration of the 24 periods. This indicates that short-term rates rose much more than long-term rates, leading to a flatter or inverted yield curve.
+*   **Persistent Valuation Changes:** The "dividend/price ratio" spikes and remains elevated for the entire two-year period. Because stock prices dropped significantly (the denominator), the ratio stays high, suggesting that stock valuations remain depressed long after the initial interest rate shock.
+*   **Transitory Interest Rate Spikes:** While the "real interest rate" and "change in bill rate" spike immediately, they return to their baseline relatively quickly (within 5 to 10 periods), suggesting the direct effect of the policy change is shorter-lived than the resulting effects on the stock market and yield spreads.
+*   **Mean Reversion:** Most variables show a tendency to trend back toward the zero baseline by the end of the 24-month period, though the dividend/price ratio and the 10-year spread are the slowest to recover.
+
 
 --- Page 31 ---
 The real T- bill rate rises sharply at first, but the increase is relatively short- lived, and all but disappears after 4 months. In the near term, the dynamics of equity excess returns are dominated by the effects of rising interest rates. But as these effects die out, the long- run effect of the dividend- price ratio, which rises as a result of the fall in equity prices, reasserts itself. This leads to the highly persistent, positive excess returns visible in the impulse response function.
@@ -555,7 +707,7 @@ The real T- bill rate rises sharply at first, but the increase is relatively sho
 
 The second thing this approach allows us to do is calculate the impact of the Federal funds surprises on the discounted sums of expected future excess returns, interest rates, and dividends. And since it is these sums that are related to the current excess return through (10), this provides a natural way to determine the source (or sources) of the stock market's reaction to monetary policy.
 
-One way to assess policy's effect on these discounted sums is simply to use the VAR to calculate \(\tilde{e}_{t + 1}^{d}, \tilde{e}_{t + 1}^{r}\) , and \(\tilde{e}_{t + 1}^{y}\) , which represent the revisions in expectations of the relevant present values, and regress these variables in turn on \(\Delta i_{t + 1}^{u}\) . Although this would provide the answer we are after, the standard errors would be misleading, as they would fail to take into account the dependence of the \(\tilde{e}\) s on the estimated parameters of the VAR.
+One way to assess policy's effect on these discounted sums is simply to use the VAR to calculate \(\tilde{e}_{t + 1}^{d}\) , \(\tilde{e}_{t + 1}^{r}\) , and \(\tilde{e}_{t + 1}^{y}\) , which represent the revisions in expectations of the relevant present values, and regress these variables in turn on \(\Delta i_{t + 1}^{u}\) . Although this would provide the answer we are after, the standard errors would be misleading, as they would fail to take into account the dependence of the \(\tilde{e}\) s on the estimated parameters of the VAR.
 
 An alternative way to do the same calculation is to write out the \(\tilde{e}\) s in terms of the VAR coefficients. Taking \(\tilde{e}_{t + 1}^{y}\) as an example
 
@@ -578,7 +730,7 @@ or, alternatively,
 \[(s_{y} + s_{r})(1 - \rho A)^{-1}\phi . \quad (20)\]
 
 --- Page 32 ---
-# Table XI The Impact of Monetary Policy on Dividends, Interest Rates, and Future Returns
+## Table XI The Impact of Monetary Policy on Dividends, Interest Rates, and Future Returns
 
 The table reports the impact of monetary policy surprises on the current excess equity return and the discounted sums of future excess equity returns, current and future real interest rates, and current and future dividends. The six- variable VAR(1) used to construct real interest rate and excess equity return forecasts is estimated over the sample indicated in the column headings, and the contemporaneous response to the funds rate surprises is estimated on the February 1994- December 2002 subsample. Parentheses contain \(t\) - statistics, calculated using the delta method.
 

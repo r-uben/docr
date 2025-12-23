@@ -335,6 +335,7 @@ class OCRPipeline:
 
         try:
             import fitz  # PyMuPDF
+            import re
             from PIL import Image
         except ImportError:
             self.console.print_warning("Figure detection skipped (PyMuPDF/Pillow not available)")
@@ -344,6 +345,7 @@ class OCRPipeline:
         max_dim = 1024
         min_area = 80 * 80
         render_dpi = 150
+        min_drawings_for_vector_figure = 5  # Minimum drawings to consider as vector figure
 
         # Prepare figures directory if saving is enabled
         figures_dir: Path | None = None
@@ -374,6 +376,76 @@ class OCRPipeline:
 
                     per_page = 0
                     processed_regions: set[tuple[int, int, int, int]] = set()
+
+                    # Strategy 0: Detect vector figures (charts/plots made of drawings)
+                    # Many academic figures are vector graphics, not raster images
+                    try:
+                        drawings = page.get_drawings()
+                        page_text = page.get_text()
+
+                        # Check if page has enough drawings and mentions "Figure X"
+                        figure_match = re.search(r'Figure\s+(\d+)\.', page_text)
+                        if figure_match and len(drawings) >= min_drawings_for_vector_figure:
+                            # Compute bounding box of all drawings
+                            all_x0 = min(d['rect'].x0 for d in drawings)
+                            all_y0 = min(d['rect'].y0 for d in drawings)
+                            all_x1 = max(d['rect'].x1 for d in drawings)
+                            all_y1 = max(d['rect'].y1 for d in drawings)
+
+                            width = all_x1 - all_x0
+                            height = all_y1 - all_y0
+                            area = width * height
+
+                            # Only process if figure is reasonably sized
+                            if area >= min_area and width > 50 and height > 50:
+                                region_key = (int(all_x0), int(all_y0), int(all_x1), int(all_y1))
+                                if region_key not in processed_regions:
+                                    processed_regions.add(region_key)
+
+                                    # Add padding around the figure
+                                    padding = 10
+                                    clip = fitz.Rect(
+                                        max(0, all_x0 - padding),
+                                        max(0, all_y0 - padding),
+                                        min(page.rect.width, all_x1 + padding),
+                                        min(page.rect.height, all_y1 + padding)
+                                    )
+
+                                    mat = fitz.Matrix(render_dpi / 72, render_dpi / 72)
+                                    try:
+                                        pix = page.get_pixmap(matrix=mat, clip=clip)
+                                        pil_img = Image.frombytes("RGB", (pix.width, pix.height), pix.samples)
+
+                                        if max(pil_img.size) > max_dim:
+                                            pil_img.thumbnail((max_dim, max_dim))
+
+                                        # Save figure image if enabled
+                                        fig_path: str | None = None
+                                        if figures_dir:
+                                            fig_filename = f"figure_{figure_counter}_page{page_num}.png"
+                                            fig_path = str(figures_dir / fig_filename)
+                                            pil_img.save(fig_path)
+
+                                        fig_result = figure_engine.describe_figure(pil_img, context=context_text or "")
+                                        fig_result.figure_num = figure_counter
+                                        fig_result.page_num = page_num
+                                        if fig_path:
+                                            fig_result.image_path = fig_path
+
+                                        page_result.figures.append(fig_result)
+                                        self.console.print_figure_result(
+                                            figure_num=fig_result.figure_num,
+                                            page=page_num,
+                                            fig_type=fig_result.figure_type,
+                                            description=fig_result.description,
+                                        )
+
+                                        figure_counter += 1
+                                        per_page += 1
+                                    except Exception:
+                                        pass  # Fall through to other strategies
+                    except Exception:
+                        pass  # Fall through to other strategies
 
                     # Strategy 1: Extract IMAGE blocks from page structure (vector graphics, composites)
                     # These have bounding boxes and need to be rendered from the page.
@@ -462,6 +534,14 @@ class OCRPipeline:
                             continue
                         if aspect > 8 or aspect < 0.125:
                             continue
+
+                        # Skip very small images (likely logos/icons, not figures)
+                        try:
+                            raw_image = pdf.extract_image(xref)
+                            if len(raw_image.get("image", b"")) < 5000:  # < 5KB
+                                continue
+                        except Exception:
+                            pass  # Continue if we can't check size
 
                         pix = None
                         rgb = None
