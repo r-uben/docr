@@ -1,79 +1,78 @@
-"""Color theme and styling for OCR Agent terminal UI."""
+"""Minimal theme for OCR Agent terminal UI."""
 
 from rich.style import Style
 from rich.theme import Theme
 
-# Agent colors
-NOUGAT_COLOR = "#E67E22"      # Orange - scientific specialist
-DEEPSEEK_COLOR = "#3498DB"    # Blue - local general
-MISTRAL_COLOR = "#9B59B6"     # Purple - cloud fallback
-GEMINI_COLOR = "#1ABC9C"      # Teal - cloud fallback
-OLLAMA_COLOR = "#2ECC71"      # Green - local audit
+# Muted, zen-like colors
+PRIMARY_COLOR = "#7C9CB5"      # Muted blue
+ACCENT_COLOR = "#A8B5A0"       # Sage green  
+WARN_COLOR = "#C9A86C"         # Muted gold
+ERROR_COLOR = "#B07878"        # Muted red
+DIM_COLOR = "#6B7280"          # Gray
 
-# Status colors
-SUCCESS_COLOR = "#2ECC71"
-WARNING_COLOR = "#F39C12"
-ERROR_COLOR = "#E74C3C"
-INFO_COLOR = "#3498DB"
-DIM_COLOR = "#7F8C8D"
+# Engine colors (muted)
+NOUGAT_COLOR = "#B08968"       # Warm brown
+DEEPSEEK_COLOR = "#7C9CB5"     # Muted blue
+MISTRAL_COLOR = "#9B8AA6"      # Muted purple
+GEMINI_COLOR = "#7BA695"       # Sage
+OLLAMA_COLOR = "#8BA888"       # Soft green
 
-# Stage colors
 STAGE_COLORS = {
-    "classify": "#9B59B6",
-    "primary": "#3498DB",
-    "audit": "#2ECC71",
-    "fallback": "#E67E22",
-    "figures": "#1ABC9C",
+    "classify": "#9B8AA6",
+    "primary": "#7C9CB5",
+    "audit": "#8BA888",
+    "fallback": "#B08968",
+    "figures": "#7BA695",
 }
 
-# Engine styling
 ENGINE_STYLES = {
-    "nougat": Style(color=NOUGAT_COLOR, bold=True),
-    "deepseek": Style(color=DEEPSEEK_COLOR, bold=True),
-    "mistral": Style(color=MISTRAL_COLOR, bold=True),
-    "gemini": Style(color=GEMINI_COLOR, bold=True),
-    "ollama": Style(color=OLLAMA_COLOR, bold=True),
+    "nougat": Style(color=NOUGAT_COLOR),
+    "deepseek": Style(color=DEEPSEEK_COLOR),
+    "mistral": Style(color=MISTRAL_COLOR),
+    "gemini": Style(color=GEMINI_COLOR),
+    "ollama": Style(color=OLLAMA_COLOR),
 }
 
+# No emojis - simple text markers
 ENGINE_ICONS = {
-    "nougat": "🥜",
-    "deepseek": "🔷",
-    "mistral": "💎",
-    "gemini": "✨",
-    "ollama": "🦙",
+    "nougat": "",
+    "deepseek": "",
+    "mistral": "",
+    "gemini": "",
+    "ollama": "",
 }
 
 ENGINE_LABELS = {
-    "nougat": "Nougat",
-    "deepseek": "DeepSeek",
-    "mistral": "Mistral",
-    "gemini": "Gemini",
-    "ollama": "Ollama",
+    "nougat": "nougat",
+    "deepseek": "deepseek",
+    "mistral": "mistral",
+    "gemini": "gemini",
+    "ollama": "ollama",
 }
 
+# Minimal status markers
 STATUS_ICONS = {
-    "success": "✓",
-    "warning": "⚠",
-    "error": "✗",
-    "pending": "○",
-    "running": "◉",
-    "skipped": "◌",
+    "success": "+",
+    "warning": "!",
+    "error": "x",
+    "pending": ".",
+    "running": "*",
+    "skipped": "-",
 }
 
-# Create Rich theme
 AGENT_THEME = Theme({
     "nougat": ENGINE_STYLES["nougat"],
     "deepseek": ENGINE_STYLES["deepseek"],
     "mistral": ENGINE_STYLES["mistral"],
     "gemini": ENGINE_STYLES["gemini"],
     "ollama": ENGINE_STYLES["ollama"],
-    "success": Style(color=SUCCESS_COLOR),
-    "warning": Style(color=WARNING_COLOR),
+    "success": Style(color=ACCENT_COLOR),
+    "warning": Style(color=WARN_COLOR),
     "error": Style(color=ERROR_COLOR),
-    "info": Style(color=INFO_COLOR),
+    "info": Style(color=PRIMARY_COLOR),
     "dim": Style(color=DIM_COLOR),
-    "stage.title": Style(color="#ECF0F1", bold=True),
-    "stage.border": Style(color="#34495E"),
-    "header": Style(color="#ECF0F1", bold=True),
-    "highlight": Style(color="#F1C40F", bold=True),
+    "stage.title": Style(color="#D1D5DB"),
+    "stage.border": Style(color="#4B5563"),
+    "header": Style(color="#D1D5DB"),
+    "highlight": Style(color=WARN_COLOR),
 })

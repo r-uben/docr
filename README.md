@@ -37,35 +37,39 @@ ocr-agent batch ~/Papers/ --limit 10
 Processing a 22-page economics paper:
 
 ```
-+----------------------- OCR AGENT ------------------------+
-|  Document: kuttner_2001_monetary_policy.pdf              |
-|  Pages: 22 | Type: academic                              |
-+----------------------------------------------------------+
+ocr-agent v0.1.0
 
-| STAGE 1: PRIMARY OCR
-  Engine: DeepSeek (local, free)
-  [ok] Pages 1-22 processed
+kuttner_2001_monetary_policy.pdf
+22 pages, 1.2 MB
+type: academic
 
-| STAGE 2: QUALITY AUDIT
-  [!] Page 10 flagged (19.2% garbage ratio)
+(1) primary ocr
+    deepseek
+    [+] page 1
+    [+] page 2
+    ...
 
-| STAGE 3: FALLBACK OCR
-  Engine: Gemini (cloud, $0.0002/page)
-  [ok] Page 10 reprocessed
+(2) quality audit
+    [!] page 10 (19.2% garbage)
 
-| STAGE 4: FIGURE PROCESSING
-  [ok] Figure 1 (p.1): journal_header
-  [ok] Figure 2 (p.8): scatter_plot — Two-panel scatter plot...
-  [ok] Figure 3 (p.12): scatter_plot — Futures rate changes...
+(3) fallback ocr
+    gemini
+    [+] page 10
 
-+------------------------ COMPLETE -------------------------+
-|  Pages: 22/22 successful                                  |
-|  Figures: 3 described                                     |
-|  Time: 241.5s                                             |
-|  Cost: $0.0002                                            |
-|                                                           |
-|  Engines: DeepSeek (21) + Gemini (1)                      |
-+-----------------------------------------------------------+
+(4) figure processing
+    [+] fig 1 (p.1): unknown
+    [+] fig 2 (p.8): scatter_plot
+    [+] fig 3 (p.12): scatter_plot
+
+---
+
+done 22/22 pages
+     3 figures
+     241.5s
+     $0.0002
+     deepseek (21) + gemini (1)
+
+-> output/kuttner_2001_monetary_policy/kuttner_2001_monetary_policy.md
 ```
 
 Output structure:

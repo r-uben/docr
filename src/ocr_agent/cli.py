@@ -8,7 +8,7 @@ from rich.console import Console
 from ocr_agent import __version__
 from ocr_agent.core.config import AgentConfig, EngineType
 from ocr_agent.pipeline.processor import OCRPipeline
-from ocr_agent.ui.theme import AGENT_THEME, ENGINE_ICONS, ENGINE_LABELS
+from ocr_agent.ui.theme import AGENT_THEME, ENGINE_LABELS
 
 
 console = Console(theme=AGENT_THEME)
@@ -17,7 +17,7 @@ console = Console(theme=AGENT_THEME)
 @click.group()
 @click.version_option(version=__version__, prog_name="ocr-agent")
 def cli() -> None:
-    """🔍 OCR Agent - Multi-Engine Document Processing.
+    """OCR Agent - Multi-Engine Document Processing.
 
     A multi-agent OCR system that uses cascading fallback
     between local and cloud engines for optimal quality and cost.
@@ -203,18 +203,18 @@ def batch(
     results: list[tuple[Path, bool, str]] = []
 
     for i, pdf_path in enumerate(pdf_files, 1):
-        console.print(f"\n[bold][{i}/{len(pdf_files)}][/bold] {pdf_path.name}")
+        console.print(f"\n[dim][{i}/{len(pdf_files)}][/dim] {pdf_path.name}")
         try:
             result = pipeline.process(pdf_path)
             output_path = pipeline.save_output(result)
             results.append((pdf_path, True, str(output_path)))
-            console.print(f"  [success]✓[/success] → {output_path}")
+            console.print(f"  [success]\\[+][/success] {output_path}")
         except KeyboardInterrupt:
-            console.print("\n[warning]⚠ Batch cancelled[/warning]")
+            console.print("\n[warning]\\[!] cancelled[/warning]")
             break
         except Exception as e:
             results.append((pdf_path, False, str(e)))
-            console.print(f"  [error]✗[/error] {e}")
+            console.print(f"  [error]\\[x][/error] {e}")
 
     # Summary
     success = sum(1 for _, ok, _ in results if ok)
@@ -225,7 +225,7 @@ def batch(
 @cli.command()
 def engines() -> None:
     """Show available OCR engines and their status."""
-    console.print("\n[bold]Available OCR Engines[/bold]\n")
+    console.print("\n[header]engines[/header]\n")
 
     from ocr_agent.engines import (
         DeepSeekEngine,
@@ -235,30 +235,20 @@ def engines() -> None:
     )
 
     engines_info = [
-        ("nougat", NougatEngine(), "Free, local, best for academic papers"),
-        ("deepseek", DeepSeekEngine(), "Free, local via Ollama, general purpose"),
-        ("mistral", MistralEngine(), "Cloud API, $0.001/page, high accuracy"),
-        ("gemini", GeminiEngine(), "Cloud API, ~$0.0002/page, multimodal"),
+        ("nougat", NougatEngine(), "local, academic papers"),
+        ("deepseek", DeepSeekEngine(), "local via ollama, general"),
+        ("mistral", MistralEngine(), "cloud, $0.001/page"),
+        ("gemini", GeminiEngine(), "cloud, $0.0002/page"),
     ]
 
     for name, engine, desc in engines_info:
-        icon = ENGINE_ICONS.get(name, "⚙")
         label = ENGINE_LABELS.get(name, name)
         available = engine.is_available()
 
-        status_icon = "[success]✓[/success]" if available else "[error]✗[/error]"
-        status_text = "available" if available else "not available"
+        status = "+" if available else "x"
+        style = "success" if available else "error"
 
-        console.print(f"  {icon} [{name}]{label}[/{name}]")
-        console.print(f"      {status_icon} {status_text}")
-        console.print(f"      [dim]{desc}[/dim]")
-
-        caps = engine.capabilities
-        console.print(f"      [dim]├── Local: {'Yes' if caps.is_local else 'No'}[/dim]")
-        console.print(f"      [dim]├── Cost: {'Free' if caps.cost_per_page == 0 else f'${caps.cost_per_page}/page'}[/dim]")
-        console.print(f"      [dim]├── Figures: {'Yes' if caps.supports_figures else 'No'}[/dim]")
-        console.print(f"      [dim]└── Best for: {', '.join(caps.best_for or ['general'])}[/dim]")
-        console.print()
+        console.print(f"  [{style}]\\[{status}][/{style}] [{name}]{label}[/{name}] [dim]{desc}[/dim]")
 
 
 @cli.command()
@@ -269,25 +259,23 @@ def engines() -> None:
 )
 def audit_status(ollama_host: str) -> None:
     """Check quality audit system status."""
-    console.print("\n[bold]Quality Audit Status[/bold]\n")
+    console.print("\n[header]audit[/header]\n")
 
     from ocr_agent.audit.llm_audit import LLMAuditor
 
-    # Check Ollama connection
     auditor = LLMAuditor(ollama_host=ollama_host)
     ollama_ok = auditor.is_available()
 
-    status_icon = "[success]✓[/success]" if ollama_ok else "[error]✗[/error]"
-    console.print(f"  🦙 [ollama]Ollama[/ollama]")
-    console.print(f"      {status_icon} {'Connected' if ollama_ok else 'Not available'}")
-    console.print(f"      [dim]Host: {ollama_host}[/dim]")
+    status = "+" if ollama_ok else "x"
+    style = "success" if ollama_ok else "error"
+    
+    console.print(f"  [{style}]\\[{status}][/{style}] [ollama]ollama[/ollama] [dim]{ollama_host}[/dim]")
 
     if ollama_ok:
-        console.print(f"      [dim]Model: {auditor.model}[/dim]")
-        console.print("\n  [success]✓ Quality audit system is ready[/success]")
+        console.print(f"      [dim]model: {auditor.model}[/dim]")
+        console.print("\n  [success]ready[/success]")
     else:
-        console.print("\n  [warning]⚠ Quality audit will use heuristics only[/warning]")
-        console.print("  [dim]Start Ollama to enable LLM-based quality checks[/dim]")
+        console.print("\n  [warning]heuristics only (start ollama for llm audit)[/warning]")
 
 
 @cli.command()
@@ -304,9 +292,9 @@ def describe_figures(pdf_path: Path, engine: str) -> None:
     Uses vision-capable models to generate descriptions
     for charts, tables, and diagrams.
     """
-    console.print(f"\n[bold]Describing figures in: {pdf_path.name}[/bold]\n")
-    console.print("[warning]Figure extraction/description is experimental.[/warning]")
-    console.print("[dim]Use `ocr-agent process` with figures enabled to run the figure pass after OCR.[/dim]")
+    console.print(f"\n{pdf_path.name}\n")
+    console.print("[warning][!] experimental[/warning]")
+    console.print("[dim]use `ocr-agent process` with figures enabled[/dim]")
 
 
 # Shorthand aliases

@@ -1,42 +1,23 @@
-"""Main console interface for OCR Agent."""
+"""Minimal console interface for OCR Agent."""
 
-from rich.console import Console, Group
-from rich.panel import Panel
-from rich.rule import Rule
-from rich.table import Table
+from rich.console import Console
 from rich.text import Text
 
 from ocr_agent import __version__
-from ocr_agent.ui.theme import (
-    AGENT_THEME,
-    ENGINE_ICONS,
-    ENGINE_LABELS,
-    STATUS_ICONS,
-)
+from ocr_agent.ui.theme import AGENT_THEME, ENGINE_LABELS, STATUS_ICONS
 
 
 class AgentConsole:
-    """Beautiful terminal interface for the OCR Agent."""
+    """Minimal terminal interface for the OCR Agent."""
 
     def __init__(self, verbose: bool = False):
         self.console = Console(theme=AGENT_THEME)
         self.verbose = verbose
 
     def print_header(self) -> None:
-        """Print the agent header banner."""
-        header = Text()
-        header.append("🔍 ", style="bold")
-        header.append("OCR Agent", style="bold white")
-        header.append(f" v{__version__}", style="dim")
-
-        subtitle = Text("Multi-Engine Document Processing", style="dim italic")
-
-        panel = Panel(
-            Group(header, subtitle),
-            border_style="bright_blue",
-            padding=(0, 2),
-        )
-        self.console.print(panel)
+        """Print minimal header."""
+        self.console.print()
+        self.console.print(f"[dim]ocr-agent v{__version__}[/dim]")
         self.console.print()
 
     def print_document_info(
@@ -48,53 +29,23 @@ class AgentConsole:
         detected_features: list[str] | None = None,
     ) -> None:
         """Print document information."""
-        info = Text()
-        info.append("📄 ", style="bold")
-        info.append("Document: ", style="dim")
-        info.append(filename, style="bold white")
-        info.append(f" ({pages} pages, {size_mb:.1f} MB)", style="dim")
-
-        self.console.print(info)
-
-        if doc_type or detected_features:
-            details = Text("   ")
-            details.append("Type: ", style="dim")
-            details.append(doc_type or "Unknown", style="info")
-
-            if detected_features:
-                details.append(" (detected: ", style="dim")
-                details.append(", ".join(detected_features), style="warning")
-                details.append(")", style="dim")
-
-            self.console.print(details)
-
+        self.console.print(f"[header]{filename}[/header]")
+        self.console.print(f"[dim]{pages} pages, {size_mb:.1f} MB[/dim]")
+        if doc_type:
+            self.console.print(f"[dim]type: {doc_type}[/dim]")
         self.console.print()
 
     def print_stage_header(self, stage_num: int, title: str, subtitle: str = "") -> None:
-        """Print a stage header."""
-        header = Text()
-        header.append(f"STAGE {stage_num}: ", style="bold bright_blue")
-        header.append(title, style="bold white")
-
+        """Print a minimal stage header."""
         self.console.print()
-        self.console.print(Panel(
-            header,
-            subtitle=subtitle if subtitle else None,
-            border_style="bright_blue",
-            padding=(0, 1),
-        ))
+        self.console.print(f"[dim]({stage_num})[/dim] [header]{title.lower()}[/header]")
 
     def print_engine_active(self, engine: str, description: str = "") -> None:
-        """Print which engine is currently active."""
-        icon = ENGINE_ICONS.get(engine, "⚙")
+        """Print which engine is active."""
         label = ENGINE_LABELS.get(engine, engine)
-
-        line = Text()
-        line.append(f"{icon} ", style="bold")
-        line.append(label, style=engine)
+        line = f"    [{engine}]{label}[/{engine}]"
         if description:
-            line.append(f" {description}", style="dim")
-
+            line += f" [dim]{description}[/dim]"
         self.console.print(line)
 
     def print_page_result(
@@ -105,20 +56,18 @@ class AgentConsole:
         confidence: float | None = None,
     ) -> None:
         """Print result for a single page."""
-        icon = STATUS_ICONS.get(status, "?")
-        style = status
-
-        line = Text("   ")
-        line.append(f"{icon} ", style=style)
-        line.append(f"Page {page}", style="bold" if status != "success" else "")
-
-        if confidence is not None:
-            conf_style = "success" if confidence >= 0.8 else "warning" if confidence >= 0.6 else "error"
-            line.append(f" ({confidence:.0%})", style=conf_style)
-
+        icon = STATUS_ICONS.get(status, ".")
+        
+        line = Text("    ")
+        line.append(f"[{icon}] ", style=status)
+        line.append(f"page {page}", style="" if status == "success" else "bold")
+        
+        if confidence is not None and confidence < 0.8:
+            line.append(f" ({confidence:.0%})", style="warning")
+        
         if message:
-            line.append(f" - {message}", style="dim")
-
+            line.append(f" {message}", style="dim")
+        
         self.console.print(line)
 
     def print_audit_result(
@@ -128,25 +77,13 @@ class AgentConsole:
         status: str = "info",
     ) -> None:
         """Print an audit metric result."""
-        icon = STATUS_ICONS.get(status, "○")
-
-        line = Text("   ")
-        line.append(f"{icon} ", style=status)
-        line.append(f"{metric}: ", style="dim")
-        line.append(value, style=status)
-
-        self.console.print(line)
+        icon = STATUS_ICONS.get(status, ".")
+        self.console.print(f"    [{icon}] {metric}: [{status}]{value}[/{status}]")
 
     def print_cost(self, amount: float, description: str = "") -> None:
         """Print cost information."""
-        line = Text("   ")
-        line.append("💰 ", style="bold")
-        line.append("Cost: ", style="dim")
-        line.append(f"${amount:.4f}", style="warning")
-        if description:
-            line.append(f" ({description})", style="dim")
-
-        self.console.print(line)
+        if amount > 0:
+            self.console.print(f"    [dim]cost: ${amount:.4f}[/dim]")
 
     def print_figure_result(
         self,
@@ -156,14 +93,8 @@ class AgentConsole:
         description: str,
     ) -> None:
         """Print result for a processed figure."""
-        line = Text("   ")
-        line.append(f"{STATUS_ICONS['success']} ", style="success")
-        line.append(f"Figure {figure_num}", style="bold")
-        line.append(f" (p.{page}): ", style="dim")
-        line.append(fig_type, style="info")
-        line.append(f" - {description[:50]}{'...' if len(description) > 50 else ''}", style="dim")
-
-        self.console.print(line)
+        short_desc = description[:40] + "..." if len(description) > 40 else description
+        self.console.print(f"    [+] fig {figure_num} (p.{page}): [info]{fig_type}[/info] [dim]{short_desc}[/dim]")
 
     def print_summary(
         self,
@@ -175,67 +106,43 @@ class AgentConsole:
         engines_used: dict[str, int],
         output_path: str,
     ) -> None:
-        """Print the final summary panel."""
+        """Print the final summary."""
         self.console.print()
-
-        # Build summary content
-        content = []
-
-        # Stats section
-        stats = Text()
-        stats.append("📊 ", style="bold")
-        stats.append("Summary\n", style="bold white")
-        stats.append(f"   Pages: {pages_success}/{pages_total} successful\n", style="dim")
-        stats.append(f"   Figures: {figures_count} described\n", style="dim")
-        stats.append(f"   Time: {time_seconds:.1f}s\n", style="dim")
-        stats.append(f"   Cost: ${cost:.4f}\n", style="dim")
-        content.append(stats)
-
-        # Engines section
-        engines = Text()
-        engines.append("\n🔧 ", style="bold")
-        engines.append("Engines Used\n", style="bold white")
-
-        engine_items = list(engines_used.items())
-        for i, (engine, count) in enumerate(engine_items):
-            icon = ENGINE_ICONS.get(engine, "⚙")
-            label = ENGINE_LABELS.get(engine, engine)
-            prefix = "└──" if i == len(engine_items) - 1 else "├──"
-            engines.append(f"   {prefix} {icon} ", style="dim")
-            engines.append(label, style=engine)
-            engines.append(f": {count}\n", style="dim")
-
-        content.append(engines)
-
-        # Output section
-        output = Text()
-        output.append("\n📁 ", style="bold")
-        output.append("Output: ", style="bold white")
-        output.append(output_path, style="info")
-        content.append(output)
-
-        panel = Panel(
-            Group(*content),
-            title="[bold green]✨ COMPLETE[/bold green]",
-            border_style="green",
-            padding=(1, 2),
-        )
-
-        self.console.print(panel)
+        self.console.print("[dim]---[/dim]")
+        self.console.print()
+        
+        # Stats
+        self.console.print(f"[success]done[/success] {pages_success}/{pages_total} pages")
+        
+        if figures_count > 0:
+            self.console.print(f"     {figures_count} figures")
+        
+        self.console.print(f"     {time_seconds:.1f}s")
+        
+        if cost > 0:
+            self.console.print(f"     ${cost:.4f}")
+        
+        # Engines
+        engine_parts = [f"{ENGINE_LABELS.get(e, e)} ({c})" for e, c in engines_used.items()]
+        self.console.print(f"[dim]     {' + '.join(engine_parts)}[/dim]")
+        
+        self.console.print()
+        self.console.print(f"[dim]->[/dim] {output_path}")
+        self.console.print()
 
     def print_error(self, message: str) -> None:
         """Print an error message."""
-        self.console.print(f"[error]{STATUS_ICONS['error']} Error:[/error] {message}")
+        self.console.print(f"[error][x] {message}[/error]")
 
     def print_warning(self, message: str) -> None:
         """Print a warning message."""
-        self.console.print(f"[warning]{STATUS_ICONS['warning']} Warning:[/warning] {message}")
+        self.console.print(f"[warning][!] {message}[/warning]")
 
     def print_info(self, message: str) -> None:
         """Print an info message."""
         if self.verbose:
-            self.console.print(f"[dim]ℹ {message}[/dim]")
+            self.console.print(f"[dim]    {message}[/dim]")
 
     def rule(self, title: str = "") -> None:
-        """Print a horizontal rule."""
-        self.console.print(Rule(title, style="dim"))
+        """Print a subtle divider."""
+        self.console.print("[dim]---[/dim]")
