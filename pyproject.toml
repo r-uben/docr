@@ -7,7 +7,7 @@ authors = [
 ]
 readme = "README.md"
 license = {text = "MIT"}
-requires-python = ">=3.10"
+requires-python = ">=3.11,<3.13"
 keywords = ["ocr", "pdf", "document-processing", "nougat", "mistral", "gemini", "deepseek"]
 classifiers = [
     "Development Status :: 4 - Beta",
@@ -16,7 +16,6 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
 ]
@@ -38,13 +37,13 @@ dev = [
 ]
 # OCR Engine CLIs - install individually based on needs
 deepseek = ["deepseek-ocr-cli>=0.1.0"]
-nougat = ["nougat-ocr-cli>=0.1.0"]
+nougat = ["nougat-ocr-cli>=0.1.2"]
 gemini = ["gemini-ocr-cli>=0.2.0"]
 mistral = ["mistral-ocr-cli>=0.1.0"]
 # Convenience groups
-local = ["deepseek-ocr-cli>=0.1.0", "nougat-ocr-cli>=0.1.0"]
+local = ["deepseek-ocr-cli>=0.1.0", "nougat-ocr-cli>=0.1.2"]
 cloud = ["gemini-ocr-cli>=0.2.0", "mistral-ocr-cli>=0.1.0"]
-all = ["deepseek-ocr-cli>=0.1.0", "nougat-ocr-cli>=0.1.0", "gemini-ocr-cli>=0.2.0", "mistral-ocr-cli>=0.1.0"]
+all = ["deepseek-ocr-cli>=0.1.0", "nougat-ocr-cli>=0.1.2", "gemini-ocr-cli>=0.2.0", "mistral-ocr-cli>=0.1.0"]
 
 [project.scripts]
 docr = "docr.cli:main"
