@@ -82,7 +82,23 @@ output/<doc_stem>/
     └── ...
 ```
 
-See `examples/kuttner_2001/` for a complete example.
+The `metadata.json` contains:
+```json
+{
+  "document": "/path/to/paper.pdf",
+  "stats": {
+    "total_pages": 22,
+    "pages_success": 22,
+    "total_cost": 0.0002,
+    "total_time": 241.5
+  },
+  "engines_used": { "deepseek": 21, "gemini": 1 },
+  "figures": 3,
+  "pages_needing_reprocessing": []
+}
+```
+
+See `examples/kuttner_2001/` for a complete example with all 3 figures.
 
 ## Pipeline
 
