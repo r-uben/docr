@@ -384,6 +384,7 @@ class OCRPipeline:
                     is_landscape = page.rect.width > page.rect.height
                     # Adjust thresholds for presentations (more permissive)
                     effective_min_area_ratio = min_vector_figure_area_ratio * 0.5 if is_landscape else min_vector_figure_area_ratio
+                    effective_max_area_ratio = 0.98 if is_landscape else max_vector_figure_area_ratio  # Presentations have large charts
                     effective_min_drawings = 3 if is_landscape else min_drawings_for_vector_figure
 
                     # Strategy 0: Detect vector figures (charts/plots made of drawings)
@@ -423,7 +424,7 @@ class OCRPipeline:
                                     continue
                                 if area_ratio < effective_min_area_ratio:
                                     continue  # Too small to be meaningful
-                                if area_ratio > max_vector_figure_area_ratio:
+                                if area_ratio > effective_max_area_ratio:
                                     continue  # Likely page background/decoration
                                 if len(region_drawings) < effective_min_drawings:
                                     continue  # Not enough drawings in this cluster
@@ -483,6 +484,54 @@ class OCRPipeline:
                                     per_page += 1
                                 except Exception:
                                     pass  # Fall through to other strategies
+
+                            # Fallback for presentations: if drawings exist but weren't extracted
+                            # (e.g., they cover the whole page), render the content area
+                            if is_landscape and per_page == 0 and len(drawings) >= 10:
+                                # Render center 80% of page (exclude header/footer margins)
+                                margin_x = page_width * 0.05
+                                margin_top = page_height * 0.15  # Title area
+                                margin_bottom = page_height * 0.10  # Footer area
+                                clip = fitz.Rect(
+                                    margin_x,
+                                    margin_top,
+                                    page_width - margin_x,
+                                    page_height - margin_bottom
+                                )
+
+                                mat = fitz.Matrix(render_dpi / 72, render_dpi / 72)
+                                try:
+                                    pix = page.get_pixmap(matrix=mat, clip=clip)
+                                    pil_img = Image.frombytes("RGB", (pix.width, pix.height), pix.samples)
+
+                                    if max(pil_img.size) > max_dim:
+                                        pil_img.thumbnail((max_dim, max_dim))
+
+                                    # Save figure image if enabled
+                                    fig_path: str | None = None
+                                    if figures_dir:
+                                        fig_filename = f"figure_{figure_counter}_page{page_num}.png"
+                                        fig_path = str(figures_dir / fig_filename)
+                                        pil_img.save(fig_path)
+
+                                    fig_result = figure_engine.describe_figure(pil_img, context=context_text or "")
+                                    fig_result.figure_num = figure_counter
+                                    fig_result.page_num = page_num
+                                    if fig_path:
+                                        fig_result.image_path = fig_path
+
+                                    page_result.figures.append(fig_result)
+                                    self.console.print_figure_result(
+                                        figure_num=fig_result.figure_num,
+                                        page=page_num,
+                                        fig_type=fig_result.figure_type,
+                                        description=fig_result.description,
+                                    )
+
+                                    figure_counter += 1
+                                    per_page += 1
+                                except Exception:
+                                    pass
                     except Exception:
                         pass  # Fall through to other strategies
 
