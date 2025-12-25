@@ -106,6 +106,7 @@ class AgentConfig:
     # Processing options
     output_dir: Path = field(default_factory=lambda: Path("output"))
     output_format: str = "markdown"  # markdown, json, txt
+    render_dpi: int | str = "auto"  # "auto", or explicit: 150, 200, 300
     include_figures: bool = True
     save_figures: bool = False  # Save extracted figure images to disk
     figures_max_total: int = 25  # Hard cap across document
@@ -194,6 +195,7 @@ class AgentConfig:
             "verbose",
             "use_primary_override",
             "use_fallback_override",
+            "render_dpi",
         ]:
             if key in data:
                 setattr(config, key, data[key])

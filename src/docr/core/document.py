@@ -79,18 +79,33 @@ class Document:
         return None
 
     @classmethod
-    def from_pdf(cls, path: Path | str) -> "Document":
-        """Create document from a PDF file."""
+    def from_pdf(cls, path: Path | str, render_dpi: int | str = "auto") -> "Document":
+        """Create document from a PDF file.
+
+        Args:
+            path: Path to PDF file
+            render_dpi: DPI for rendering pages. Can be:
+                - "auto": Smart detection based on document characteristics
+                - int (e.g., 150, 200, 300): Explicit DPI value
+        """
         import fitz  # PyMuPDF
 
         path = Path(path)
         doc = cls(path=path)
 
         pdf = fitz.open(path)
+
+        # Determine DPI
+        if render_dpi == "auto":
+            dpi = cls._auto_detect_dpi(pdf)
+        else:
+            dpi = int(render_dpi)
+
+        doc.detected_features.append(f"render_dpi={dpi}")
+
         for page_num in range(len(pdf)):
             page = pdf[page_num]
-            # Render at 150 DPI for good OCR quality
-            mat = fitz.Matrix(150 / 72, 150 / 72)
+            mat = fitz.Matrix(dpi / 72, dpi / 72)
             pix = page.get_pixmap(matrix=mat)
 
             # Convert to PIL Image
@@ -99,6 +114,35 @@ class Document:
 
         pdf.close()
         return doc
+
+    @staticmethod
+    def _auto_detect_dpi(pdf) -> int:
+        """Auto-detect optimal DPI based on document characteristics.
+
+        Logic:
+        - Dense reports (>50 pages) → 200 DPI for small text/tables
+        - Presentations (landscape) → 150 DPI (charts as figures anyway)
+        - Default → 150 DPI
+        """
+        page_count = len(pdf)
+
+        # Check first page orientation
+        if page_count > 0:
+            first_page = pdf[0]
+            is_landscape = first_page.rect.width > first_page.rect.height
+        else:
+            is_landscape = False
+
+        # Decision logic
+        if page_count > 50:
+            # Dense report - use higher DPI for tables/footnotes
+            return 200
+        elif is_landscape:
+            # Presentation - standard DPI (charts extracted as figures)
+            return 150
+        else:
+            # Default
+            return 150
 
     def classify(self) -> DocumentType:
         """Classify document type based on content analysis."""

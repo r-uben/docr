@@ -71,7 +71,7 @@ class OCRPipeline:
         self.console.print_header()
 
         # Load document
-        document = Document.from_pdf(pdf_path)
+        document = Document.from_pdf(pdf_path, render_dpi=self.config.render_dpi)
         document.classify()
 
         self.console.print_document_info(

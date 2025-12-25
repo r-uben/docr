@@ -86,6 +86,12 @@ def cli(ctx: click.Context, pdf_path: Path | None, save_figures: bool) -> None:
     help="Parallel workers for page/figure processing (default: 4, use 1 for sequential)",
 )
 @click.option(
+    "--dpi",
+    type=str,
+    default="auto",
+    help="Render DPI: 'auto' (smart detection), or explicit value like 150, 200, 300",
+)
+@click.option(
     "-v", "--verbose",
     is_flag=True,
     help="Enable verbose output",
@@ -101,6 +107,7 @@ def process(
     save_figures: bool,
     timeout: int,
     workers: int,
+    dpi: str,
     verbose: bool,
 ) -> None:
     """Process a PDF document with multi-agent OCR.
@@ -112,12 +119,16 @@ def process(
     Example:
         ocr-agent process paper.pdf -o extracted.md
     """
+    # Parse DPI (can be "auto" or int)
+    render_dpi: int | str = dpi if dpi == "auto" else int(dpi)
+
     config = AgentConfig(
         output_format=format,
         include_figures=not no_figures,
         save_figures=save_figures,
         parallel_pages=workers,
         parallel_figures=max(1, workers // 2),  # Fewer parallel figure workers (API calls)
+        render_dpi=render_dpi,
         verbose=verbose,
     )
 
@@ -201,6 +212,12 @@ def process(
     help="Parallel workers for page/figure processing (default: 4)",
 )
 @click.option(
+    "--dpi",
+    type=str,
+    default="auto",
+    help="Render DPI: 'auto' (smart detection), or explicit value like 150, 200, 300",
+)
+@click.option(
     "--limit",
     type=int,
     help="Maximum number of PDFs to process",
@@ -215,6 +232,7 @@ def batch(
     save_figures: bool,
     timeout: int,
     workers: int,
+    dpi: str,
     limit: int | None,
 ) -> None:
     """Process all PDFs in a directory.
@@ -233,12 +251,16 @@ def batch(
 
     console.print(f"\n[bold]Batch Processing: {len(pdf_files)} PDFs[/bold]\n")
 
+    # Parse DPI (can be "auto" or int)
+    render_dpi: int | str = dpi if dpi == "auto" else int(dpi)
+
     config = AgentConfig(
         output_format=format,
         include_figures=not no_figures,
         save_figures=save_figures,
         parallel_pages=workers,
         parallel_figures=max(1, workers // 2),
+        render_dpi=render_dpi,
     )
 
     # Apply timeout to all engine configs
