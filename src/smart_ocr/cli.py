@@ -1,37 +1,37 @@
-"""CLI for docr - Multi-Engine Document Processing."""
+"""CLI for smart-ocr - Multi-Engine Document Processing."""
 
 from pathlib import Path
 
 import click
 from rich.console import Console
 
-from docr import __version__
-from docr.core.config import AgentConfig, EngineType
-from docr.pipeline.processor import OCRPipeline
-from docr.ui.theme import AGENT_THEME, ENGINE_LABELS
+from smart_ocr import __version__
+from smart_ocr.core.config import AgentConfig, EngineType
+from smart_ocr.pipeline.processor import OCRPipeline
+from smart_ocr.ui.theme import AGENT_THEME, ENGINE_LABELS
 
 
 console = Console(theme=AGENT_THEME)
 
 
 @click.group(invoke_without_command=True)
-@click.version_option(version=__version__, prog_name="docr")
+@click.version_option(version=__version__, prog_name="smart-ocr")
 @click.argument("pdf_path", type=click.Path(exists=True, path_type=Path), required=False)
 @click.option("--save-figures", is_flag=True, help="Save figure images to disk")
 @click.pass_context
 def cli(ctx: click.Context, pdf_path: Path | None, save_figures: bool) -> None:
-    """docr - Multi-Engine Document Processing.
+    """smart-ocr - Multi-Engine Document Processing.
 
     A multi-agent OCR system that uses cascading fallback
     between local and cloud engines for optimal quality and cost.
 
     Usage:
-        docr paper.pdf                    # Simple usage
-        docr paper.pdf --save-figures     # Save figures
-        docr process paper.pdf [OPTIONS]  # Full options
+        smart-ocr paper.pdf                    # Simple usage
+        smart-ocr paper.pdf --save-figures     # Save figures
+        smart-ocr process paper.pdf [OPTIONS]  # Full options
     """
     if ctx.invoked_subcommand is None and pdf_path is not None:
-        # Direct invocation: docr paper.pdf
+        # Direct invocation: smart-ocr paper.pdf
         ctx.invoke(process, pdf_path=pdf_path, save_figures=save_figures)
 
 
@@ -306,7 +306,7 @@ def engines() -> None:
     """Show available OCR engines and their status."""
     console.print("\n[header]engines[/header]\n")
 
-    from docr.engines import (
+    from smart_ocr.engines import (
         DeepSeekEngine,
         GeminiEngine,
         MistralEngine,
@@ -340,7 +340,7 @@ def audit_status(ollama_host: str) -> None:
     """Check quality audit system status."""
     console.print("\n[header]audit[/header]\n")
 
-    from docr.audit.llm_audit import LLMAuditor
+    from smart_ocr.audit.llm_audit import LLMAuditor
 
     auditor = LLMAuditor(ollama_host=ollama_host)
     ollama_ok = auditor.is_available()

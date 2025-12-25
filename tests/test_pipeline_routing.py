@@ -5,11 +5,11 @@ import pytest
 
 pytest.importorskip("rich")
 
-from docr.core.config import AgentConfig, EngineType
-from docr.core.result import OCRResult
-from docr.core.document import DocumentType
-from docr.pipeline.processor import OCRPipeline
-from docr.pipeline.router import EngineRouter
+from smart_ocr.core.config import AgentConfig, EngineType
+from smart_ocr.core.result import OCRResult
+from smart_ocr.core.document import DocumentType
+from smart_ocr.pipeline.processor import OCRPipeline
+from smart_ocr.pipeline.router import EngineRouter
 
 
 class _StubEngine:

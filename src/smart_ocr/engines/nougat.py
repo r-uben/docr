@@ -11,9 +11,9 @@ from pathlib import Path
 
 from PIL import Image
 
-from docr.core.config import NougatConfig
-from docr.core.result import PageResult, PageStatus
-from docr.engines.base import BaseEngine, EngineCapabilities
+from smart_ocr.core.config import NougatConfig
+from smart_ocr.core.result import PageResult, PageStatus
+from smart_ocr.engines.base import BaseEngine, EngineCapabilities
 
 
 class NougatEngine(BaseEngine):

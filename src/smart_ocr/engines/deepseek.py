@@ -12,9 +12,9 @@ from pathlib import Path
 
 from PIL import Image
 
-from docr.core.config import DeepSeekConfig
-from docr.core.result import FigureResult, PageResult
-from docr.engines.base import BaseEngine, EngineCapabilities
+from smart_ocr.core.config import DeepSeekConfig
+from smart_ocr.core.result import FigureResult, PageResult
+from smart_ocr.engines.base import BaseEngine, EngineCapabilities
 
 
 class DeepSeekEngine(BaseEngine):

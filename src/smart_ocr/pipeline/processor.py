@@ -9,21 +9,21 @@ from rich.console import Console
 from rich.live import Live
 from rich.table import Table
 
-from docr.audit.heuristics import HeuristicsChecker
-from docr.audit.llm_audit import LLMAuditor
-from docr.core.config import AgentConfig, EngineType
-from docr.core.document import Document, DocumentType
-from docr.core.result import OCRResult, PageResult, PageStatus, ProcessingStats
-from docr.pipeline.router import EngineRouter
-from docr.engines.base import BaseEngine
-from docr.engines.deepseek import DeepSeekEngine
-from docr.engines.gemini import GeminiEngine
-from docr.engines.mistral import MistralEngine
-from docr.engines.nougat import NougatEngine
-from docr.ui.console import AgentConsole
-from docr.ui.panels import AuditPanel, StagePanel, SummaryPanel
-from docr.ui.progress import AgentProgress
-from docr.ui.theme import AGENT_THEME
+from smart_ocr.audit.heuristics import HeuristicsChecker
+from smart_ocr.audit.llm_audit import LLMAuditor
+from smart_ocr.core.config import AgentConfig, EngineType
+from smart_ocr.core.document import Document, DocumentType
+from smart_ocr.core.result import OCRResult, PageResult, PageStatus, ProcessingStats
+from smart_ocr.pipeline.router import EngineRouter
+from smart_ocr.engines.base import BaseEngine
+from smart_ocr.engines.deepseek import DeepSeekEngine
+from smart_ocr.engines.gemini import GeminiEngine
+from smart_ocr.engines.mistral import MistralEngine
+from smart_ocr.engines.nougat import NougatEngine
+from smart_ocr.ui.console import AgentConsole
+from smart_ocr.ui.panels import AuditPanel, StagePanel, SummaryPanel
+from smart_ocr.ui.progress import AgentProgress
+from smart_ocr.ui.theme import AGENT_THEME
 
 
 class OCRPipeline:

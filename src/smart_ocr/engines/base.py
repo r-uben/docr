@@ -7,7 +7,7 @@ from typing import Any
 
 from PIL import Image
 
-from docr.core.result import FigureResult, PageResult, PageStatus
+from smart_ocr.core.result import FigureResult, PageResult, PageStatus
 
 
 @dataclass

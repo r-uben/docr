@@ -6,10 +6,10 @@ import pytest
 fitz = pytest.importorskip("fitz")
 PIL = pytest.importorskip("PIL")
 
-from docr.core.config import AgentConfig, EngineType
-from docr.core.document import Document
-from docr.core.result import FigureResult, OCRResult, PageResult
-from docr.pipeline.processor import OCRPipeline
+from smart_ocr.core.config import AgentConfig, EngineType
+from smart_ocr.core.document import Document
+from smart_ocr.core.result import FigureResult, OCRResult, PageResult
+from smart_ocr.pipeline.processor import OCRPipeline
 
 
 class _VisionStub:

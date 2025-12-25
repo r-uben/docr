@@ -2,7 +2,7 @@
 
 from typing import Callable, Mapping
 
-from docr.core.config import AgentConfig, EngineType
+from smart_ocr.core.config import AgentConfig, EngineType
 
 
 class EngineRouter:
@@ -49,7 +49,7 @@ class EngineRouter:
             if warn:
                 warn(f"Primary override '{override.value}' not available; using automatic selection")
 
-        from docr.core.document import DocumentType
+        from smart_ocr.core.document import DocumentType
 
         # Prefer local engines first; academic docs prefer Nougat when available.
         preference: list[EngineType] = []

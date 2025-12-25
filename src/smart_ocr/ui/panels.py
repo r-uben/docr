@@ -1,9 +1,9 @@
-"""Minimal panel components for docr."""
+"""Minimal panel components for smart-ocr."""
 
 from rich.console import Group, RenderableType
 from rich.text import Text
 
-from docr.ui.theme import ENGINE_LABELS, STATUS_ICONS
+from smart_ocr.ui.theme import ENGINE_LABELS, STATUS_ICONS
 
 
 class StagePanel:

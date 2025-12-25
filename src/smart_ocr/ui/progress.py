@@ -1,4 +1,4 @@
-"""Progress display components for docr."""
+"""Progress display components for smart-ocr."""
 
 from contextlib import contextmanager
 from typing import Generator
@@ -18,7 +18,7 @@ from rich.progress import (
 from rich.table import Table
 from rich.text import Text
 
-from docr.ui.theme import (
+from smart_ocr.ui.theme import (
     AGENT_THEME,
     ENGINE_ICONS,
     ENGINE_LABELS,
